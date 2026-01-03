@@ -81,7 +81,7 @@ __global__ void sgemm_register_tiled(const float* A, const float* B, float* C, i
             As[col_a + 3][row_a] = v.w;
         }
 
-        // --- float4 向量化加载 A (Global -> Shared) ---
+        // --- float4 向量化加载 B (Global -> Shared) ---
         // 目标: 搬运 B 的 [BK x BN] = [8 x 64] = 512 floats = 128 float4
         // B 的 Tile 是 8 行 64 列, 每一行有 16 个 float4
         if (tid < BK * BN / 4){
