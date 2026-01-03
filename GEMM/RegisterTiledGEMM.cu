@@ -31,7 +31,7 @@ __global__ void sgemm_register_tiled(const float* A, const float* B, float* C, i
     // --------------------------------------
     // 遍历 K 维度
     // --------------------------------------
-    for (int k_idx = 0; k_dix < K; k_dix += BK){
+    for (int k_idx = 0; k_idx < K; k_idx += BK){
 
         // --- float4 向量化加载 A (Global -> Shared) ---
         // 目标: 搬运 A 的 [BM x BK] = [64 x 8] = 512 floats = 128 float4
