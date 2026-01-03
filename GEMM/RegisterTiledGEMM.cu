@@ -72,7 +72,7 @@ __global__ void sgemm_register_tiled(const float* A, const float* B, float* C, i
                 (Tile起点)   (Tile内偏移)
             
             */
-            float4 v = reinterpret_cast<const float4*>(&A[(blockIDx.y * BM + row_a) * K + (k_idx + col_a)])[0];
+            float4 v = reinterpret_cast<const float4*>(&A[(blockIdx.y * BM + row_a) * K + (k_idx + col_a)])[0];
 
             // 写入 Shared Memory (As 转置存[col][row])
             As[col_a + 0][row_a] = v.x;
